@@ -66,13 +66,13 @@ bot.on("message", async function (msg) {
   } else if (data == "photos") {
     bot.sendPhoto(chatId, "./m5.jpg");
   } else if (data == "price") {
-    bot.sendMessage(chatId, "175,000 dollar", {
+    bot.sendMessage(chatId, "180,000 dollar", {
       reply_markup: {
         inline_keyboard: [[{ text: "Sotib olish", callback_data: "buy" }]],
       },
     });
   } else if (data == "buy") {
-    bot.sendMessage(chatId, "Pullarni Soliyajonga bering... Mashina unda");
+    bot.sendMessage(chatId, "Pullarni shahnozada bering... Mashina unda");
   }
 });
   console.log(msg);
