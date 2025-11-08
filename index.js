@@ -14,6 +14,8 @@ bot.on("message", async function (msg) {
   const shirinlik = "./shirinlik.jpg";
   const shashlik = "./shashlik.jpg";
   const hotdog = "./hot dog.jpg";
+  const car = "./m5.jpg";
+  const settings = "./settings.png";
 
   if (text == "/start") {
     bot.sendMessage(chatId, `Xush kelibsiz, ${firstname}`, {
@@ -26,7 +28,7 @@ bot.on("message", async function (msg) {
       },
     });
   } else if (text == "Boshlash 🔥") {
-    bot.sendPhoto(chatId, "./m5.jpg", {
+    bot.sendPhoto(chatId, car, {
       caption: `Mercedes-Benz G-Class (Gelik) — bu dunyodagi eng mashhur va hashamatli yo‘ltanlamas avtomobillardan biridir. U 1979-yilda ishlab chiqarila boshlangan va shu kungacha o‘zining kuchi, ishonchliligi va o‘ziga xos dizayni bilan mashhur bo‘lib kelmoqda. “Gelik” nomi aslida “Geländewagen” so‘zining qisqartmasi bo‘lib, bu nemis tilida “yo‘ltanlamas avtomobil” degan ma’noni anglatadi.
 
 
@@ -56,6 +58,7 @@ G63 AMG — Gelikning eng mashhur versiyalaridan biri bo‘lib, unda 4.0 litrli 
           keyboard: [
             [{ text: "Ichimlik" }, { text: "Shirinlik" }],
             [{ text: "Shashlik" }, { text: "Hotdog" }],
+            [{text: "Orqaga qaytish⏮️"}],
           ],
         },
       });
@@ -67,16 +70,21 @@ G63 AMG — Gelikning eng mashhur versiyalaridan biri bo‘lib, unda 4.0 litrli 
   const chatId = query.message.chat.id;
 
   if (data == "info") {
+    bot.answerCallbackQuery(query.id, { text: "Infoo!"})
     bot.sendMessage(chatId, "Bu yerda Lamborghini haqida ma'lumot olasiz");
   } else if (data == "photos") {
-    bot.sendPhoto(chatId, "./images.jpg");
+    bot.answerCallbackQuery(query.id, { text: "Photos!"})
+    bot.sendPhoto(chatId, "./m5.jpg");
   } else if (data == "price") {
+    bot.answerCallbackQuery(query.id, { text: "Price!"})
+
     bot.sendMessage(chatId, "175,000 dollar", {
       reply_markup: {
         inline_keyboard: [[{ text: "Sotib olish", callback_data: "buy" }]],
       },
     });
   } else if (data == "buy") {
+    bot.answerCallbackQuery(query.id, { text: "Buy!"})
     bot.sendMessage(chatId, "Pullarni Soliyajonga bering... Mashina unda");
   }
 });
@@ -96,6 +104,24 @@ if (text== "Ichimlik") {
 }else if (text== "Hotdog") {
    bot.sendPhoto(chatId, hotdog, {
     caption: `Bu yerda xohlagan turdagi hot doglaringizni buyurtma qilishingiz mumkin.`
+  });
+}else if(text === "Orqaga qaytish⏮️"){
+  bot.sendMessage(chatId, "⏮️Bosh menyuga qaytdingiz",{
+    reply_markup: {
+      keyboard: [
+        [{text: "Boshlash 🔥"}],
+        [{text: "Menu 😜"}, {text: "Sozlamalar ⚙️"}]
+      ],
+      resize_keyboard: true, 
+    },
+  });
+}
+
+
+
+if (text == "Sozlamalar ⚙️") {
+  bot.sendPhoto(chatId, settings,{
+    caption: `Sizga qanday yordam bera olaman!😊`
   });
 }
 
